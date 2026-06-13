@@ -1,0 +1,176 @@
+<!-- Luxury Salon Logo Component -->
+<!-- Aapne apne header/navbar mein yeh code paste kar sakte ho -->
+
+<style>
+    .luxury-logo-container {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .luxury-logo-icon {
+        width: 48px;
+        height: 48px;
+        min-width: 48px;
+        filter: drop-shadow(0 4px 8px rgba(183, 110, 121, 0.15));
+        transition: transform 0.4s ease;
+    }
+
+    .luxury-logo-container:hover .luxury-logo-icon {
+        transform: scale(1.08) rotate(2deg);
+    }
+
+    .luxury-logo-text {
+        display: flex;
+        flex-direction: column;
+        line-height: 1;
+        gap: 2px;
+    }
+
+    .logo-brand-name {
+        font-family: 'Playfair Display', serif;
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        background: linear-gradient(135deg, #B76E79, #D4AF37, #B76E79);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-transform: uppercase;
+        transition: all 0.4s ease;
+    }
+
+    .logo-brand-tagline {
+        font-family: 'Inter', sans-serif;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 2.5px;
+        color: #B76E79;
+        text-transform: uppercase;
+        opacity: 0.8;
+        transition: all 0.4s ease;
+    }
+
+    .luxury-logo-container:hover .logo-brand-name {
+        letter-spacing: 1.5px;
+    }
+
+    .luxury-logo-container:hover .logo-brand-tagline {
+        opacity: 1;
+        letter-spacing: 3px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .luxury-logo-icon {
+            width: 40px;
+            height: 40px;
+        }
+
+        .logo-brand-name {
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+
+        .logo-brand-tagline {
+            font-size: 9px;
+            letter-spacing: 2px;
+        }
+    }
+</style>
+
+<!-- Logo Component -->
+<a href="#hero" class="luxury-logo-container" title="Namastey Salon">
+    <!-- Geometric Pattern SVG Icon -->
+    <svg class="luxury-logo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <!-- Rose Gold Metallic Gradient -->
+            <linearGradient id="roseGoldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#FFE5E5;stop-opacity:1" />
+                <stop offset="40%" style="stop-color:#B76E79;stop-opacity:1" />
+                <stop offset="70%" style="stop-color:#D4AF37;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#8B5A5D;stop-opacity:1" />
+            </linearGradient>
+
+            <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" style="stop-color:#FFD700;stop-opacity:0.6" />
+                <stop offset="100%" style="stop-color:#B76E79;stop-opacity:0.2" />
+            </radialGradient>
+        </defs>
+
+        <!-- Background Circle -->
+        <circle cx="50" cy="50" r="48" fill="none" stroke="url(#roseGoldGradient)" stroke-width="2" opacity="0.3"/>
+
+        <!-- Center Circle with Glow -->
+        <circle cx="50" cy="50" r="35" fill="url(#centerGlow)" opacity="0.1"/>
+
+        <!-- Elegant Geometric Pattern - Abstract Salon Symbol -->
+        <!-- Outer Petals (Lotus/Hair Inspired) -->
+        <g transform="translate(50, 50)">
+            <!-- Petal 1 - Top -->
+            <path d="M 0,-25 Q -8,-18 -8,-8 Q -8,0 0,5 Q 8,0 8,-8 Q 8,-18 0,-25 Z" 
+                  fill="url(#roseGoldGradient)" opacity="0.85"/>
+
+            <!-- Petal 2 - Right -->
+            <path d="M 25,0 Q 18,8 8,8 Q 0,8 -5,0 Q 0,-8 8,-8 Q 18,-8 25,0 Z" 
+                  fill="url(#roseGoldGradient)" opacity="0.75" transform="rotate(120)"/>
+
+            <!-- Petal 3 - Left -->
+            <path d="M 25,0 Q 18,8 8,8 Q 0,8 -5,0 Q 0,-8 8,-8 Q 18,-8 25,0 Z" 
+                  fill="url(#roseGoldGradient)" opacity="0.75" transform="rotate(240)"/>
+
+            <!-- Center Element - Elegant Circle with Inner Detail -->
+            <circle cx="0" cy="0" r="8" fill="url(#roseGoldGradient)" opacity="0.9"/>
+            
+            <!-- Inner Sparkle -->
+            <circle cx="0" cy="0" r="5" fill="none" stroke="#FFD700" stroke-width="1.5" opacity="0.6"/>
+            
+            <!-- Accent Lines -->
+            <line x1="-3" y1="-3" x2="3" y2="3" stroke="#B76E79" stroke-width="1.5" opacity="0.8"/>
+            <line x1="3" y1="-3" x2="-3" y2="3" stroke="#B76E79" stroke-width="1.5" opacity="0.8"/>
+        </g>
+
+        <!-- Decorative Sparkles -->
+        <circle cx="15" cy="20" r="2" fill="#D4AF37" opacity="0.5"/>
+        <circle cx="85" cy="30" r="2" fill="#B76E79" opacity="0.5"/>
+        <circle cx="75" cy="80" r="1.5" fill="#D4AF37" opacity="0.4"/>
+    </svg>
+
+    <!-- Text Section -->
+    <div class="luxury-logo-text">
+        <div class="logo-brand-name">Salon Namastey</div>
+        <div class="logo-brand-tagline">Luxury Hair Artistry</div>
+    </div>
+</a>
+
+<!-- ===== USAGE INSTRUCTIONS ===== 
+
+1. Ise apne navbar section mein replace karein:
+   Purana code:
+   <div class="logo">
+       <a href="#hero" class="logo-brand">
+                <div class="logo-icon"></div>
+           <span class="logo-text-top">NAMASTEY</span>
+           <span class="logo-text-bottom">-SALON-</span>
+       </a>
+   </div>
+
+   Naya code - upper wala logo-component.html copy paste karein
+
+2. Agar CSS separately rakhna chahte ho:
+   - <style> section ko apne main CSS file mein paste karein
+   - SVG HTML ko navbar mein rakhein
+
+3. Color Customization:
+   - Rose Gold: #B76E79 (edit karne ke liye search karein)
+   - Gold Accent: #D4AF37
+   - Gradient mein edit karein for different colors
+
+4. Size Adjust:
+   - .luxury-logo-icon width/height ko change karein
+   - Font sizes ko adjust karein
+
+===== END INSTRUCTIONS ===== -->

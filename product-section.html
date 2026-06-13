@@ -1,0 +1,605 @@
+<!-- ===== LUXURY PRODUCT & COLLECTION SECTION ===== -->
+<!-- Paste this section into your main index.html -->
+
+<style>
+    /* --- PRODUCT SECTION PREMIUM STYLES --- */
+    .products-section {
+        background: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 50%, #0F0F0F 100%);
+        padding: 80px 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .products-section::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 800px;
+        height: 800px;
+        background: radial-gradient(circle, rgba(255, 209, 0, 0.05) 0%, transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
+    }
+
+    .products-section::after {
+        content: '';
+        position: absolute;
+        bottom: -50%;
+        left: -50%;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(0, 229, 255, 0.03) 0%, transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
+    }
+
+    .products-container {
+        width: 90%;
+        max-width: 1400px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+    }
+
+    .products-header {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    .products-header h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        font-weight: 700;
+        color: #FFFFFF;
+        margin-bottom: 12px;
+        letter-spacing: 2px;
+        line-height: 1.2;
+    }
+
+    .products-header h2 span {
+        background: linear-gradient(135deg, #FFD100, #00E5FF);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-style: italic;
+    }
+
+    .products-header p {
+        font-family: 'Inter', sans-serif;
+        font-size: 1.1rem;
+        color: #B0B0B0;
+        max-width: 600px;
+        margin: 0 auto;
+        letter-spacing: 0.5px;
+        line-height: 1.6;
+    }
+
+    /* --- SLIDER WRAPPER --- */
+    .products-slider-wrapper {
+        position: relative;
+        overflow: hidden;
+        margin: 0 auto;
+    }
+
+    .products-slider {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: minmax(320px, 1fr);
+        gap: 24px;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255, 209, 0, 0.3) transparent;
+        padding: 20px 0;
+        
+        /* Hide scrollbar for cleaner look */
+        -ms-overflow-style: none;
+    }
+
+    .products-slider::-webkit-scrollbar {
+        height: 4px;
+    }
+
+    .products-slider::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .products-slider::-webkit-scrollbar-thumb {
+        background: rgba(255, 209, 0, 0.3);
+        border-radius: 10px;
+    }
+
+    .products-slider::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 209, 0, 0.5);
+    }
+
+    /* --- PRODUCT CARD --- */
+    .product-card {
+        background: linear-gradient(135deg, rgba(30, 30, 30, 0.8), rgba(40, 40, 40, 0.6));
+        border: 1px solid rgba(255, 209, 0, 0.15);
+        border-radius: 20px;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        scroll-snap-align: start;
+        min-height: 420px;
+    }
+
+    .product-card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(255, 209, 0, 0.1) 0%, rgba(0, 229, 255, 0.05) 100%);
+        opacity: 0;
+        transition: opacity 0.6s ease;
+        pointer-events: none;
+    }
+
+    .product-card:hover::before {
+        opacity: 1;
+    }
+
+    .product-card:hover {
+        transform: translateY(-8px) scale(1.02);
+        border-color: rgba(255, 209, 0, 0.4);
+        box-shadow: 0 20px 60px rgba(255, 209, 0, 0.15);
+    }
+
+    /* --- PRODUCT IMAGE --- */
+    .product-image-wrapper {
+        width: 100%;
+        height: 240px;
+        border-radius: 16px;
+        overflow: hidden;
+        margin-bottom: 20px;
+        background: linear-gradient(135deg, rgba(183, 110, 121, 0.1), rgba(255, 209, 0, 0.05));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        border: 1px solid rgba(255, 209, 0, 0.1);
+    }
+
+    .product-image-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .product-card:hover .product-image-wrapper img {
+        transform: scale(1.08) rotate(1deg);
+    }
+
+    /* Placeholder for images */
+    .product-image-placeholder {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(255, 209, 0, 0.2), rgba(0, 229, 255, 0.2));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        color: rgba(255, 209, 0, 0.3);
+    }
+
+    /* --- PRODUCT CONTENT --- */
+    .product-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        z-index: 2;
+    }
+
+    .product-category {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #FFD100;
+        margin-bottom: 8px;
+        opacity: 0;
+        animation: fadeInUp 0.8s ease forwards;
+    }
+
+    .product-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #FFFFFF;
+        margin-bottom: 12px;
+        line-height: 1.3;
+        letter-spacing: 0.5px;
+        opacity: 0;
+        animation: fadeInUp 0.8s ease 0.1s forwards;
+    }
+
+    .product-description {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.95rem;
+        color: #C0C0C0;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        flex: 1;
+        opacity: 0;
+        animation: fadeInUp 0.8s ease 0.2s forwards;
+    }
+
+    .product-price {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #00E5FF;
+        letter-spacing: 1px;
+        margin-bottom: 16px;
+        opacity: 0;
+        animation: fadeInUp 0.8s ease 0.3s forwards;
+    }
+
+    /* --- CTA BUTTON --- */
+    .product-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: linear-gradient(135deg, #FFD100, #D4AF37);
+        color: #1A1A1A;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 10px;
+        font-family: 'Inter', sans-serif;
+        font-weight: 700;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: all 0.4s ease;
+        width: fit-content;
+        opacity: 0;
+        animation: fadeInUp 0.8s ease 0.4s forwards;
+    }
+
+    .product-cta:hover {
+        transform: translateX(4px) scale(1.05);
+        box-shadow: 0 8px 24px rgba(255, 209, 0, 0.4);
+    }
+
+    .product-cta:active {
+        transform: scale(0.98);
+    }
+
+    /* --- ANIMATIONS --- */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* --- SLIDER NAVIGATION BUTTONS --- */
+    .slider-nav-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, rgba(255, 209, 0, 0.2), rgba(255, 209, 0, 0.1));
+        border: 1px solid rgba(255, 209, 0, 0.3);
+        color: #FFD100;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        transition: all 0.4s ease;
+        z-index: 10;
+    }
+
+    .slider-nav-button:hover {
+        background: linear-gradient(135deg, rgba(255, 209, 0, 0.4), rgba(255, 209, 0, 0.2));
+        transform: translateY(-50%) scale(1.1);
+        box-shadow: 0 8px 24px rgba(255, 209, 0, 0.25);
+    }
+
+    .slider-nav-button.prev {
+        left: -20px;
+    }
+
+    .slider-nav-button.next {
+        right: -20px;
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 768px) {
+        .products-section {
+            padding: 60px 0;
+        }
+
+        .products-header h2 {
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+        }
+
+        .products-slider {
+            grid-auto-columns: minmax(280px, 1fr);
+            gap: 16px;
+        }
+
+        .product-card {
+            min-height: 380px;
+            padding: 20px;
+        }
+
+        .slider-nav-button {
+            width: 40px;
+            height: 40px;
+            font-size: 1rem;
+        }
+
+        .slider-nav-button.prev {
+            left: 0;
+        }
+
+        .slider-nav-button.next {
+            right: 0;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .products-section {
+            padding: 40px 0;
+        }
+
+        .products-container {
+            width: 95%;
+        }
+
+        .products-header {
+            margin-bottom: 40px;
+        }
+
+        .products-slider {
+            grid-auto-columns: minmax(260px, 1fr);
+            gap: 12px;
+        }
+
+        .product-card {
+            min-height: 360px;
+            padding: 16px;
+        }
+
+        .product-image-wrapper {
+            height: 200px;
+            margin-bottom: 16px;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+        }
+
+        .product-description {
+            font-size: 0.85rem;
+        }
+    }
+</style>
+
+<!-- HTML STRUCTURE -->
+<section class="products-section" id="products">
+    <div class="products-container">
+        <!-- Header -->
+        <div class="products-header">
+            <h2>Luxury <span>Collections</span></h2>
+            <p>Curated premium hair care and beauty elixirs. Each product is handcrafted with the finest botanical extracts and scientific innovation.</p>
+        </div>
+
+        <!-- Slider Wrapper -->
+        <div class="products-slider-wrapper">
+            <!-- Slider -->
+            <div class="products-slider" id="productsSlider">
+                <!-- Product Card 1 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-image-placeholder">✨</div>
+                    </div>
+                    <div class="product-content">
+                        <span class="product-category">Hair Serum</span>
+                        <h3 class="product-title">The Royal Oud Hair Serum</h3>
+                        <p class="product-description">Infused with rare oud essence and silk protein. Transforms dull hair into silken, luminous strands with an irresistible premium fragrance.</p>
+                        <div class="product-price">₹2,499</div>
+                        <button class="product-cta">Discover <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-image-placeholder">🌿</div>
+                    </div>
+                    <div class="product-content">
+                        <span class="product-category">Glossing Oil</span>
+                        <h3 class="product-title">Botanical Gloss Elixir</h3>
+                        <p class="product-description">A luxurious blend of jasmine, rose, and argan oil. Delivers salon-grade shine and tames frizz with botanical elegance.</p>
+                        <div class="product-price">₹1,999</div>
+                        <button class="product-cta">Discover <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-image-placeholder">💎</div>
+                    </div>
+                    <div class="product-content">
+                        <span class="product-category">Hair Mask</span>
+                        <h3 class="product-title">Velvet Restorative Mask</h3>
+                        <p class="product-description">Deep conditioning treatment with keratin and biotin. Restores damaged hair, adds volume, and creates an ultra-soft silky finish.</p>
+                        <div class="product-price">₹1,799</div>
+                        <button class="product-cta">Discover <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- Product Card 4 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-image-placeholder">👑</div>
+                    </div>
+                    <div class="product-content">
+                        <span class="product-category">Luxury Spray</span>
+                        <h3 class="product-title">Golden Luminescence Mist</h3>
+                        <p class="product-description">A lightweight finishing spray with gold particles. Creates an ethereal glow and provides 24-hour hold without stiffness.</p>
+                        <div class="product-price">₹1,499</div>
+                        <button class="product-cta">Discover <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- Product Card 5 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <div class="product-image-placeholder">🎀</div>
+                    </div>
+                    <div class="product-content">
+                        <span class="product-category">Treatment</span>
+                        <h3 class="product-title">Silk Protein Revival</h3>
+                        <p class="product-description">A premium treatment blending silk amino acids with hyaluronic acid. Strengthens, hydrates, and adds unprecedented shine and elasticity.</p>
+                        <div class="product-price">₹2,299</div>
+                        <button class="product-cta">Discover <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <button class="slider-nav-button prev" id="sliderPrev"><i class="fas fa-chevron-left"></i></button>
+            <button class="slider-nav-button next" id="sliderNext"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </div>
+</section>
+
+<!-- ===== JAVASCRIPT (GSAP + Scroll Control) ===== -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const slider = document.getElementById('productsSlider');
+        const prevBtn = document.getElementById('sliderPrev');
+        const nextBtn = document.getElementById('sliderNext');
+
+        if (!slider) return;
+
+        // Scroll Amount (in pixels)
+        const scrollAmount = 350;
+
+        // Previous Button
+        prevBtn.addEventListener('click', () => {
+            gsap.to(slider, {
+                scrollLeft: slider.scrollLeft - scrollAmount,
+                duration: 0.6,
+                ease: 'power2.inOut'
+            });
+        });
+
+        // Next Button
+        nextBtn.addEventListener('click', () => {
+            gsap.to(slider, {
+                scrollLeft: slider.scrollLeft + scrollAmount,
+                duration: 0.6,
+                ease: 'power2.inOut'
+            });
+        });
+
+        // Touch Swipe Support for Mobile
+        let startX = 0;
+        let startTime = 0;
+
+        slider.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            startTime = Date.now();
+        });
+
+        slider.addEventListener('touchend', (e) => {
+            const endX = e.changedTouches[0].clientX;
+            const duration = Date.now() - startTime;
+            const distance = startX - endX;
+
+            // Swipe threshold
+            if (Math.abs(distance) > 50 && duration < 500) {
+                if (distance > 0) {
+                    // Swipe left - scroll right
+                    gsap.to(slider, {
+                        scrollLeft: slider.scrollLeft + scrollAmount,
+                        duration: 0.6,
+                        ease: 'power2.inOut'
+                    });
+                } else {
+                    // Swipe right - scroll left
+                    gsap.to(slider, {
+                        scrollLeft: slider.scrollLeft - scrollAmount,
+                        duration: 0.6,
+                        ease: 'power2.inOut'
+                    });
+                }
+            }
+        });
+
+        // Keyboard Navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') prevBtn.click();
+            if (e.key === 'ArrowRight') nextBtn.click();
+        });
+
+        // GSAP Reveal Animation on Scroll
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.utils.toArray('.product-card').forEach((card) => {
+            gsap.from(card, {
+                opacity: 0,
+                y: 50,
+                duration: 0.8,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: card,
+                    start: 'top 90%',
+                    once: true
+                }
+            });
+        });
+    });
+</script>
+
+<!-- ===== USAGE INSTRUCTIONS =====
+
+1. PASTE THIS ENTIRE CODE into your index.html (before closing </body> tag)
+   OR
+   Create a new file and include it via iframe/components
+
+2. IMPORTANT: Make sure GSAP and ScrollTrigger are loaded in your HTML:
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+3. CSS: Already included in <style> tag, or copy to your main CSS file
+
+4. CUSTOMIZE:
+   - Change product names, descriptions, prices
+   - Update emoji placeholders with real images (src="your-image.jpg")
+   - Modify colors (search #FFD100, #00E5FF, #1A1A1A)
+   - Adjust animation timing in GSAP code
+
+5. FEATURES:
+   ✓ Horizontal scroll slider (no overflow issues)
+   ✓ Smooth GSAP animations
+   ✓ Touch-swipe support for mobile
+   ✓ Keyboard navigation (arrow keys)
+   ✓ Fully responsive design
+   ✓ Premium hover effects
+   ✓ Dark theme with luxury gradients
+
+===== END INSTRUCTIONS ===== -->
