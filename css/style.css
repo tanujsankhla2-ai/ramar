@@ -45,8 +45,10 @@
 html {
     scroll-behavior: smooth;
     width: 100%;
+    max-width: 100vw;
     overflow-x: hidden;
-    overflow-x: clip;
+    margin: 0;
+    padding: 0;
     position: relative;
 }
 
@@ -56,8 +58,10 @@ body {
     font-family: var(--font-body);
     line-height: 1.6;
     width: 100%;
+    max-width: 100vw;
     overflow-x: hidden;
-    overflow-x: clip;
+    margin: 0;
+    padding: 0;
     position: relative;
 }
 
@@ -288,8 +292,8 @@ h2 span {
     position: relative;
     overflow: hidden;
     padding-top: var(--space-10);
-    background-image: linear-gradient(rgba(250, 250, 250, 0.7), rgba(250, 250, 250, 0.9)), url('../assets/images/hero_beauty.png');
-    background-position: top center;
+    background-image: linear-gradient(rgba(250, 250, 250, 0.7), rgba(250, 250, 250, 0.9)), url('../assets/images/hero_beauty.webp');
+    background-position: center top;
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -384,6 +388,8 @@ h2 span {
     background: var(--clr-primary);
     padding: var(--space-2) 0;
     overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
 }
 .marquee-content {
     display: flex;
@@ -1113,7 +1119,7 @@ h2 span {
     /* Hero Section Mobile */
     .hero {
         min-height: 80vh;
-        padding-top: var(--space-6);
+        padding-top: 130px;
     }
     .hero-split {
         grid-template-columns: 1fr;
@@ -1152,6 +1158,7 @@ h2 span {
     }
     
     /* Section Padding */
+    .navbar + .section { padding-top: 130px; }
     .section { padding: 4rem 0; }
     .section-header { margin-bottom: var(--space-6); }
     .section-header h2 { font-size: clamp(1.5rem, 6vw, 2.2rem); margin-bottom: 1rem; }
@@ -1964,7 +1971,7 @@ body.dark-theme .nav-links a:hover {
     color: #D4AF37;
 }
 body.dark-theme .hero {
-    background-image: linear-gradient(rgba(10, 10, 10, 0.7), rgba(10, 10, 10, 0.85)), url('../assets/images/hero_beauty.png');
+    background-image: linear-gradient(rgba(10, 10, 10, 0.7), rgba(10, 10, 10, 0.85)), url('../assets/images/hero_beauty.webp');
 }
 body.dark-theme .cta-box {
     background: linear-gradient(135deg, #141414 0%, #0A0A0A 100%);
